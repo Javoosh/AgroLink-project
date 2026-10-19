@@ -11,11 +11,28 @@ import {
 } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 
-const benefits: { icon: LucideIcon; label: string }[] = [
-  { icon: PiggyBank, label: 'Menores costos' },
-  { icon: Radio, label: 'Mayor cobertura' },
-  { icon: Workflow, label: 'Automatización' },
-  { icon: MousePointerClick, label: 'Interfaz intuitiva' },
+const benefits: { icon: LucideIcon; label: string; description: string }[] = [
+  {
+    icon: PiggyBank,
+    label: 'Menores costos',
+    description: 'Evitando depender de infraestructura celular o soluciones satelitales.',
+  },
+  {
+    icon: Radio,
+    label: 'Mayor cobertura',
+    description: 'La red LoRaWAN está diseñada para largo alcance en áreas rurales y terreno complejo.',
+  },
+  {
+    icon: Workflow,
+    label: 'Automatización',
+    description: 'Permite reglas y controles para manejar el riego según condiciones medidas.',
+  },
+  {
+    icon: MousePointerClick,
+    label: 'Interfaz intuitiva',
+    description:
+      'Blynk centraliza las lecturas en un panel comprensible, con gráficos, alertas y botones de control.',
+  },
 ]
 
 type Stage = {
@@ -82,7 +99,11 @@ export function Architecture() {
             id="arquitectura-title"
             index="01"
             eyebrow="La solución"
-            title="Nuestra Solución: AgroLink."
+            title={
+              <>
+                Nuestra Solución: <span className="text-primary">AgroLink</span>.
+              </>
+            }
           />
           <p className="text-pretty leading-relaxed text-muted-foreground">
             Un sistema que envía información desde zonas alejadas del predio hasta una plataforma
@@ -105,16 +126,21 @@ export function Architecture() {
           </figcaption>
         </figure>
 
-        <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {benefits.map(({ icon: Icon, label }) => (
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map(({ icon: Icon, label, description }) => (
             <li
               key={label}
-              className="flex items-center gap-3 rounded-lg border border-border bg-card p-4 md:p-5"
+              className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
             >
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
-                <Icon className="size-5" aria-hidden="true" />
+              <span className="flex size-14 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
+                <Icon className="size-7" aria-hidden="true" />
               </span>
-              <span className="text-sm font-medium md:text-base">{label}</span>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-semibold text-primary">{label}</h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

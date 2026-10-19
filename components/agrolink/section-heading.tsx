@@ -1,7 +1,9 @@
+import type { ReactNode } from 'react'
+
 type SectionHeadingProps = {
   index: string
   eyebrow: string
-  title: string
+  title: ReactNode
   id: string
 }
 
