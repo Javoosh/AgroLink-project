@@ -43,7 +43,7 @@ export function Services() {
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
         <SectionHeading
           id="servicios-title"
-          index="04"
+          index="03"
           eyebrow="Servicios Agrotech y ecosistema"
           title="Modelo Integral de Servicios."
         />

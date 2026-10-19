@@ -1,39 +1,63 @@
 import Image from 'next/image'
-import { BatteryFull, Cpu, Radio, type LucideIcon } from 'lucide-react'
+import {
+  Activity,
+  BatteryFull,
+  Hand,
+  Radio,
+  Router,
+  Smartphone,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react'
 import { SectionHeading } from './section-heading'
 
-type Component = {
+type Item = {
   icon: LucideIcon
-  code: string
   title: string
   description: string
-  specs: string[]
 }
 
-const components: Component[] = [
+const equipment: Item[] = [
   {
-    icon: Cpu,
-    code: 'GW-01',
-    title: 'Estación AgroLink (Gateway ESP32-S3)',
-    description:
-      'Procesa la lógica central, se conecta a internet para enlazarse con la plataforma IoT Blynk y empaqueta las tramas de comunicación LoRa hacia el campo.',
-    specs: ['Wi-Fi 2.4 GHz', 'Blynk IoT', 'Tramas LoRa'],
+    icon: Router,
+    title: 'Estación AgroLink',
+    description: 'Se conecta al Wi-Fi de la casa y lleva la señal hasta el campo.',
   },
   {
     icon: Radio,
-    code: 'ND-02',
-    title: 'Nodo de Campo Receptor',
-    description:
-      'Integra transceptores LoRaWAN, sensor de humedad de suelo y módulos de relé/servomotores para el accionamiento mecánico y control de válvulas de riego.',
-    specs: ['LoRaWAN 915 MHz', 'Sensor capacitivo v1.2', 'Relé / servomotor'],
+    title: 'Nodo de campo',
+    description: 'Mide la humedad del suelo y abre o cierra la válvula de riego.',
+  },
+  {
+    icon: Activity,
+    title: 'Monitoreo y alertas',
+    description: 'Lecturas en tiempo real y control remoto del riego desde el celular.',
   },
   {
     icon: BatteryFull,
-    code: 'PR-03',
-    title: 'Protección y Autonomía',
+    title: 'Autonomía en terreno',
+    description: 'Gabinete resistente al clima, baterías propias y antena de largo alcance.',
+  },
+]
+
+const noDisruption: Item[] = [
+  {
+    icon: Wrench,
+    title: 'Sin obras ni cortes',
     description:
-      'Ensamblaje en gabinetes estancos, baterías y antenas omnidireccionales de alta ganancia adaptadas a la topografía agrícola real.',
-    specs: ['Gabinete IP65', 'Baterías 18650', 'Antena omnidireccional'],
+      'Los nodos se acoplan a las válvulas y mangueras existentes. El riego sigue funcionando durante la instalación.',
+  },
+  {
+    icon: Hand,
+    title: 'El control manual se mantiene',
+    description:
+      'Si lo prefiere, el agricultor puede seguir regando como siempre. AgroLink suma información, no reemplaza su forma de trabajar.',
+  },
+  {
+    icon: Smartphone,
+    title: 'Listo para usar',
+    description:
+      'Un panel simple en el celular, sin capacitaciones largas ni equipos adicionales que operar.',
   },
 ]
 
@@ -45,12 +69,18 @@ export function Hardware() {
       className="border-b border-border py-20 md:py-28"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
-        <SectionHeading
-          id="hardware-title"
-          index="02"
-          eyebrow="Tecnología de campo y hardware"
-          title="Componentes de Ingeniería en Terreno."
-        />
+        <div className="flex flex-col gap-4">
+          <SectionHeading
+            id="hardware-title"
+            index="02"
+            eyebrow="Equipos e implementación"
+            title="Tecnología simple que se suma a su día a día."
+          />
+          <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+            Pocos equipos, instalación rápida y control desde el celular, sin detener las
+            labores del predio.
+          </p>
+        </div>
 
         <div className="grid gap-6 lg:grid-cols-5">
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border lg:col-span-2 lg:aspect-auto">
@@ -66,35 +96,41 @@ export function Hardware() {
             </div>
           </div>
 
-          <ul className="flex flex-col gap-4 lg:col-span-3">
-            {components.map(({ icon: Icon, code, title, description, specs }) => (
-              <li
-                key={code}
-                className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40 md:p-6"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <span className="flex size-10 items-center justify-center rounded-md bg-primary/10 text-primary">
-                      <Icon className="size-5" aria-hidden="true" />
+          <div className="flex flex-col gap-6 lg:col-span-3">
+            <ul className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
+              {equipment.map(({ icon: Icon, title, description }) => (
+                <li key={title} className="flex flex-col gap-3 bg-card p-5">
+                  <span className="flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <Icon className="size-4" aria-hidden="true" />
+                  </span>
+                  <h3 className="font-medium">{title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-col gap-5 rounded-xl border border-primary/30 bg-primary/5 p-5 md:p-6">
+              <h3 className="text-lg font-semibold">
+                <span className="text-primary">Sin interrupciones:</span> su operación diaria
+                sigue igual
+              </h3>
+              <ul className="flex flex-col gap-4">
+                {noDisruption.map(({ icon: Icon, title, description }) => (
+                  <li key={title} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md border border-primary/30 bg-background text-primary">
+                      <Icon className="size-4" aria-hidden="true" />
                     </span>
-                    <h3 className="text-lg font-medium">{title}</h3>
-                  </div>
-                  <span className="font-mono text-xs text-muted-foreground">{code}</span>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
-                <ul className="flex flex-wrap gap-2" aria-label={`Especificaciones de ${title}`}>
-                  {specs.map((spec) => (
-                    <li
-                      key={spec}
-                      className="rounded border border-primary/25 bg-primary/5 px-2 py-0.5 font-mono text-xs text-primary"
-                    >
-                      {spec}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+                    <div className="flex flex-col gap-1">
+                      <p className="font-medium">{title}</p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

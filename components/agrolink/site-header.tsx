@@ -3,8 +3,7 @@ import { RadioTower } from 'lucide-react'
 const links = [
   { href: '#problema', label: 'Problema' },
   { href: '#arquitectura', label: 'Arquitectura' },
-  { href: '#hardware', label: 'Hardware' },
-  { href: '#funciones', label: 'Funciones' },
+  { href: '#hardware', label: 'Implementación' },
   { href: '#servicios', label: 'Servicios' },
 ]
 
