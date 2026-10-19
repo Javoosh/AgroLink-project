@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, DatabaseZap, SignalLow, Wallet, type LucideIcon } from 'lucide-react'
+import { AlertTriangle, ArrowRight, Clock, DatabaseZap, SignalLow, Wallet, type LucideIcon } from 'lucide-react'
 
 type ProblemPoint = {
   icon: LucideIcon
@@ -10,26 +10,22 @@ const problems: ProblemPoint[] = [
   {
     icon: SignalLow,
     title: 'Cobertura limitada',
-    description:
-      'La conexión doméstica no alcanza a los dispositivos distribuidos en sectores alejados del terreno.',
+    description: 'El Wi-Fi de la casa no llega a los sectores alejados del predio.',
   },
   {
     icon: DatabaseZap,
     title: 'Información sin acción',
-    description:
-      'Los datos de humedad, clima o riego no se traducen en decisiones claras para el agricultor.',
+    description: 'Los datos de humedad o clima no se convierten en decisiones claras.',
   },
   {
     icon: Clock,
     title: 'Decisiones tardías o intuitivas',
-    description:
-      'Sin monitoreo confiable, el riego depende de la experiencia, la observación visual o estimaciones, con riesgo de desperdiciar agua o afectar el cultivo.',
+    description: 'Se riega a ojo, con riesgo de desperdiciar agua o dañar el cultivo.',
   },
   {
     icon: Wallet,
     title: 'Soluciones poco accesibles',
-    description:
-      'Muchas alternativas técnicas resultan costosas, difíciles de instalar o complejas de usar para quienes no trabajan habitualmente con tecnología.',
+    description: 'Las alternativas actuales son caras, difíciles de instalar o de usar.',
   },
 ]
 
@@ -83,6 +79,20 @@ export function Problem() {
             </li>
           ))}
         </ul>
+
+        <div className="flex flex-col items-start gap-4 rounded-xl border border-border bg-card p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
+          <p className="text-pretty text-lg font-medium">
+            {'¿Le pasa esto en su predio? '}
+            <span className="text-muted-foreground">Conversemos sin compromiso.</span>
+          </p>
+          <a
+            href="#contacto"
+            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Solicitar evaluación
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </section>
   )

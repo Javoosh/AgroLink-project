@@ -2,6 +2,8 @@ import Image from 'next/image'
 import {
   Activity,
   BatteryFull,
+  CircuitBoard,
+  ExternalLink,
   Hand,
   Radio,
   Router,
@@ -59,6 +61,11 @@ const noDisruption: Item[] = [
     description:
       'Un panel simple en el celular, sin capacitaciones largas ni equipos adicionales que operar.',
   },
+]
+
+const simulations = [
+  { label: 'Circuito 01', href: 'https://wokwi.com/projects/478257026964389889' },
+  { label: 'Circuito 02', href: 'https://wokwi.com/projects/477164042464801793' },
 ]
 
 export function Hardware() {
@@ -131,6 +138,36 @@ export function Hardware() {
               </ul>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col gap-5 rounded-xl border border-border bg-card p-5 md:flex-row md:items-center md:justify-between md:p-6">
+          <div className="flex items-start gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
+              <CircuitBoard className="size-5" aria-hidden="true" />
+            </span>
+            <div className="flex flex-col gap-1">
+              <h3 className="font-medium">Estructura del microcontrolador</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Explore los circuitos de AgroLink en simulaciones interactivas de Wokwi.
+              </p>
+            </div>
+          </div>
+          <ul className="flex flex-col gap-3 sm:flex-row">
+            {simulations.map(({ label, href }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-primary/40 px-4 text-sm font-medium text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {label}
+                  <ExternalLink className="size-4" aria-hidden="true" />
+                  <span className="sr-only">(abre Wokwi en una pestaña nueva)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -11,27 +11,30 @@ import {
 } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 
-const benefits: { icon: LucideIcon; label: string; description: string }[] = [
+const benefits: { icon: LucideIcon; label: string; description: string; tech: string }[] = [
   {
     icon: PiggyBank,
     label: 'Menores costos',
-    description: 'Evitando depender de infraestructura celular o soluciones satelitales.',
+    description: 'Sin depender de planes celulares ni soluciones satelitales.',
+    tech: 'Sin SIM ni satélite',
   },
   {
     icon: Radio,
     label: 'Mayor cobertura',
-    description: 'La red LoRaWAN está diseñada para largo alcance en áreas rurales y terreno complejo.',
+    description: 'Señal de largo alcance que cruza cerros, hileras y grandes distancias.',
+    tech: 'Tecnología LoRaWAN',
   },
   {
     icon: Workflow,
     label: 'Automatización',
-    description: 'Permite reglas y controles para manejar el riego según condiciones medidas.',
+    description: 'El riego se activa o se detiene solo, según la humedad medida.',
+    tech: 'Reglas por sensor',
   },
   {
     icon: MousePointerClick,
     label: 'Interfaz intuitiva',
-    description:
-      'Blynk centraliza las lecturas en un panel comprensible, con gráficos, alertas y botones de control.',
+    description: 'Un panel en su celular con gráficos, alertas y botones de control.',
+    tech: 'Plataforma Blynk',
   },
 ]
 
@@ -127,7 +130,7 @@ export function Architecture() {
         </figure>
 
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map(({ icon: Icon, label, description }) => (
+          {benefits.map(({ icon: Icon, label, description, tech }) => (
             <li
               key={label}
               className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
@@ -141,6 +144,9 @@ export function Architecture() {
                   {description}
                 </p>
               </div>
+              <span className="mt-auto font-mono text-[11px] uppercase tracking-wider text-muted-foreground/70">
+                {tech}
+              </span>
             </li>
           ))}
         </ul>
