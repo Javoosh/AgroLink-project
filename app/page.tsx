@@ -3,7 +3,7 @@ import { Hero } from '@/components/agrolink/hero'
 import { Problem } from '@/components/agrolink/problem'
 import { Architecture } from '@/components/agrolink/architecture'
 import { Hardware } from '@/components/agrolink/hardware'
-import { Services } from '@/components/agrolink/services'
+import { Contact } from '@/components/agrolink/contact'
 import { SiteFooter } from '@/components/agrolink/site-footer'
 
 export default function Page() {
@@ -15,7 +15,7 @@ export default function Page() {
         <Problem />
         <Architecture />
         <Hardware />
-        <Services />
+        <Contact />
       </main>
       <SiteFooter />
     </>

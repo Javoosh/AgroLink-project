@@ -2,9 +2,8 @@ import { RadioTower } from 'lucide-react'
 
 const links = [
   { href: '#problema', label: 'Problema' },
-  { href: '#arquitectura', label: 'Arquitectura' },
+  { href: '#arquitectura', label: 'Solución' },
   { href: '#hardware', label: 'Implementación' },
-  { href: '#servicios', label: 'Servicios' },
 ]
 
 export function SiteHeader() {
@@ -34,10 +33,10 @@ export function SiteHeader() {
           </ul>
         </nav>
         <a
-          href="#arquitectura"
-          className="rounded-md border border-primary/40 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:bg-primary hover:text-primary-foreground md:hidden"
+          href="#contacto"
+          className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
         >
-          Explorar
+          Solicitar evaluación
         </a>
       </div>
     </header>
