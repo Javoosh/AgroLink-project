@@ -1,5 +1,22 @@
-import { Cpu, Repeat, Router, Sprout, type LucideIcon } from 'lucide-react'
+import {
+  Cpu,
+  MousePointerClick,
+  PiggyBank,
+  Radio,
+  Repeat,
+  Router,
+  Sprout,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react'
 import { SectionHeading } from './section-heading'
+
+const benefits: { icon: LucideIcon; label: string }[] = [
+  { icon: PiggyBank, label: 'Menores costos' },
+  { icon: Radio, label: 'Mayor cobertura' },
+  { icon: Workflow, label: 'Automatización' },
+  { icon: MousePointerClick, label: 'Interfaz intuitiva' },
+]
 
 type Stage = {
   icon: LucideIcon
@@ -64,15 +81,13 @@ export function Architecture() {
           <SectionHeading
             id="arquitectura-title"
             index="01"
-            eyebrow="Arquitectura de solución"
-            title="Topología de Red Descentralizada."
+            eyebrow="La solución"
+            title="Nuestra Solución: AgroLink."
           />
           <p className="text-pretty leading-relaxed text-muted-foreground">
-            El sistema convierte la red existente o punto de acceso a radiofrecuencia de baja
-            frecuencia (LoRa 915 MHz / LoRaWAN). Mediante un microcontrolador Gateway ESP32-S3 que
-            opera como puente (Bridge), emite y recibe órdenes a larga distancia hacia nodos de
-            campo y repetidores distribuidos para eliminar las zonas de sombra digital en el
-            predio.
+            Un sistema que envía información desde zonas alejadas del predio hasta una plataforma
+            central. Allí, el agricultor puede visualizar el estado de sus cultivos, recibir
+            alertas y controlar el riego desde una interfaz simple.
           </p>
         </div>
 
@@ -90,30 +105,19 @@ export function Architecture() {
           </figcaption>
         </figure>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <article className="flex flex-col gap-2 rounded-lg border border-border bg-card p-5 md:p-6">
-            <h3 className="font-mono text-xs uppercase tracking-widest text-primary">
-              ¿Por qué baja frecuencia?
-            </h3>
-            <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-              Los nodos utilizan ESP32-S3 como unidad de control y módulos LoRa de baja frecuencia
-              para transmitir datos de sensores. Las señales de menor frecuencia tienen mayor
-              longitud de onda, lo que favorece su penetración a través de vegetación, desniveles
-              y otras obstrucciones del terreno.
-            </p>
-          </article>
-          <article className="flex flex-col gap-2 rounded-lg border border-border bg-card p-5 md:p-6">
-            <h3 className="font-mono text-xs uppercase tracking-widest text-primary">
-              ¿Qué necesita internet?
-            </h3>
-            <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-              Solo la Estación AgroLink, ubicada donde ya existe conexión (por ejemplo, el hogar),
-              necesita internet para sincronizar con el panel Blynk. Entre la estación, los
-              repetidores y los nodos de campo, la comunicación es por radiofrecuencia LoRa y no
-              depende de una conexión constante de alta velocidad ni de cobertura móvil.
-            </p>
-          </article>
-        </div>
+        <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {benefits.map(({ icon: Icon, label }) => (
+            <li
+              key={label}
+              className="flex items-center gap-3 rounded-lg border border-border bg-card p-4 md:p-5"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
+                <Icon className="size-5" aria-hidden="true" />
+              </span>
+              <span className="text-sm font-medium md:text-base">{label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
